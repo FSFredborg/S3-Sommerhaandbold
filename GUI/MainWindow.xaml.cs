@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace S3_Sommerhaandbold
+namespace GUI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

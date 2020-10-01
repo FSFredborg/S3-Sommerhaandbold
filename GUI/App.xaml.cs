@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace S3_Sommerhaandbold
+namespace GUI
 {
     /// <summary>
     /// Interaction logic for App.xaml
