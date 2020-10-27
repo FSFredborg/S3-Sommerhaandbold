@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Collections.Specialized;
+using System.ComponentModel;
 
 namespace GUI
 {
@@ -19,10 +20,16 @@ namespace GUI
             Teams = new ObservableCollection<Team>();
             foreach (var team in Db.AllTeams())
             {
+                team.PropertyChanged += TeamsCollectionItemChanged;
                 Teams.Add(team);
             }
 
             Teams.CollectionChanged += TeamsCollectionChanged;
+        }
+
+        private void TeamsCollectionItemChanged(object sender, PropertyChangedEventArgs e)
+        {
+            Db.UpdateTeam((Team)sender);
         }
 
         private void TeamsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -33,6 +40,7 @@ namespace GUI
                     if (e.NewItems != null) {
                         foreach (Team team in e.NewItems)
                         {
+                            team.PropertyChanged += TeamsCollectionItemChanged;
                             Db.AddTeam(team);
                         }
                     }
@@ -42,25 +50,12 @@ namespace GUI
                     {
                         foreach (Team team in e.OldItems)
                         {
+                            team.PropertyChanged -= TeamsCollectionItemChanged;
                             Db.DeleteTeam(team);
                         }
                     }
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    if (e.OldItems != null)
-                    {
-                        foreach (Team team in e.OldItems)
-                        {
-                            Db.DeleteTeam(team);
-                        }
-                    }
-                    if (e.NewItems != null)
-                    {
-                        foreach (Team team in e.NewItems)
-                        {
-                            Db.AddTeam(team);
-                        }
-                    }
                     break;
                 case NotifyCollectionChangedAction.Move:
                     break;
