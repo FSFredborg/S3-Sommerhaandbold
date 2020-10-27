@@ -35,9 +35,9 @@
             <TabItem Header="Teams">
                 <DataGrid ItemsSource="{Binding Teams}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Name"/>
-                        <DataGridTextColumn Header="Seed"/>
-                        <DataGridTextColumn Header="Pot"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="Seedning" Binding="{Binding Seed}"/>
+                        <DataGridTextColumn Header="Pulje" Binding="{Binding Pot}" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
