@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Model {
     public interface IDatabase {
@@ -20,10 +21,11 @@ namespace Model {
     // changes, use IDatabase.UpdateTeam.
     //
     // Structs are not supported by EF Core. Use classes
-    public class Team {
+    public class Team : INotifyPropertyChanged {
         public int Id { get; set; }
         public string Name { get; set; }
         public int Seed { get; set; }
         public int Pot { get; set; }
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

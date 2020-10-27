@@ -30,25 +30,36 @@ namespace GUI
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
-                    foreach (Team team in e.NewItems)
-                    {
-                        Db.AddTeam(team);
+                    if (e.NewItems != null) {
+                        foreach (Team team in e.NewItems)
+                        {
+                            Db.AddTeam(team);
+                        }
                     }
                     break;
                 case NotifyCollectionChangedAction.Remove:
-                    foreach (Team team in e.OldItems)
+                    if (e.OldItems != null)
                     {
-                        Db.DeleteTeam(team);
+                        foreach (Team team in e.OldItems)
+                        {
+                            Db.DeleteTeam(team);
+                        }
                     }
                     break;
                 case NotifyCollectionChangedAction.Replace:
-                    foreach (Team team in e.OldItems)
+                    if (e.OldItems != null)
                     {
-                        Db.DeleteTeam(team);
+                        foreach (Team team in e.OldItems)
+                        {
+                            Db.DeleteTeam(team);
+                        }
                     }
-                    foreach (Team team in e.NewItems)
+                    if (e.NewItems != null)
                     {
-                        Db.AddTeam(team);
+                        foreach (Team team in e.NewItems)
+                        {
+                            Db.AddTeam(team);
+                        }
                     }
                     break;
                 case NotifyCollectionChangedAction.Move:
