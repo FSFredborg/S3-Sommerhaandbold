@@ -33,7 +33,7 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Teams">
-                <DataGrid ItemsSource="{Binding Teams}" AutoGenerateColumns="False">
+                <DataGrid ItemsSource="{Binding TeamsViewModel.Teams}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                         <DataGridTextColumn Header="Seedning" Binding="{Binding Seed}"/>

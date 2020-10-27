@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 namespace GUI {
     class MainViewModel {
-        public ObservableCollection<Team> Teams { get; private set; }
+        public TeamsViewModel TeamsViewModel { get; private set; }
 
         public ObservableCollection<LayerViewModel> Layers { get; private set; }
 
@@ -11,10 +11,7 @@ namespace GUI {
             Layers = new ObservableCollection<LayerViewModel>();
             for (int i = 1; i <= 4; ++i) Layers.Add(new LayerViewModel(i));
 
-            Teams = new ObservableCollection<Team>();
-            foreach (var team in database.AllTeams()) {
-                Teams.Add(team);
-            }
+            TeamsViewModel = new TeamsViewModel(database);
         }
     }
 }
