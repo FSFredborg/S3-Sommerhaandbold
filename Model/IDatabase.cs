@@ -18,8 +18,12 @@ namespace Model {
 
     // Team is a plain object. You may change its properties; to save such
     // changes, use IDatabase.UpdateTeam.
-    public struct Team {
+    //
+    // Structs are not supported by EF Core. Use classes
+    public class Team {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int Seed { get; set; }
+        public int Pot { get; set; }
     }
 }
