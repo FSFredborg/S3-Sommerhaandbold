@@ -29,7 +29,7 @@ namespace GUI
 
         public void NewTeamAdded(string name, string seed) {
             // TODO: Initialize Pot, handle error when parsing seed.
-            Teams.Add(new Team { Id = -1, Name = name, Seed = int.Parse(seed), Pot = -1 });
+            Teams.Add(new Team { Name = name, Seed = int.Parse(seed), Pot = -1 });
         }
 
         private void TeamsCollectionItemChanged(object sender, PropertyChangedEventArgs e)
