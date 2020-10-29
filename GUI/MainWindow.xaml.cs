@@ -1,4 +1,6 @@
 ﻿using Model;
+using Database;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +20,17 @@ namespace GUI
 {
     public partial class MainWindow : Window
     {
+        private readonly MainViewModel mainViewModel;
+
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainViewModel(new PlaceholderDatabase());
+            mainViewModel = new MainViewModel(new Database.Database());
+            DataContext = mainViewModel;
+        }
+
+        private void NewTeamAdded(object sender, RoutedEventArgs e) {
+            mainViewModel.NewTeamAdded(name: NewTeamName.Text, seed: NewTeamSeed.Text);
         }
     }
 }

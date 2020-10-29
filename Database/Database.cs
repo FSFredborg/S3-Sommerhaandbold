@@ -17,6 +17,7 @@ namespace Database
         public void AddTeam(Team team)
         {
             Teams.Add(team);
+            SaveChanges();
         }
 
         public List<Team> AllTeams()

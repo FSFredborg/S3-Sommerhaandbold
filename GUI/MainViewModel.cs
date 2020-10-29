@@ -13,5 +13,9 @@ namespace GUI {
 
             TeamsViewModel = new TeamsViewModel(database);
         }
+
+        public void NewTeamAdded(string name, string seed) {
+            TeamsViewModel.NewTeamAdded(name, seed);
+        }
     }
 }

@@ -27,6 +27,11 @@ namespace GUI
             Teams.CollectionChanged += TeamsCollectionChanged;
         }
 
+        public void NewTeamAdded(string name, string seed) {
+            // TODO: Initialize Pot, handle error when parsing seed.
+            Teams.Add(new Team { Id = -1, Name = name, Seed = int.Parse(seed), Pot = -1 });
+        }
+
         private void TeamsCollectionItemChanged(object sender, PropertyChangedEventArgs e)
         {
             Db.UpdateTeam((Team)sender);
